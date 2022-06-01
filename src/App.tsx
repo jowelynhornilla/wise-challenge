@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { ApolloProvider } from "@apollo/client";
+import { apolloClient } from "./apollo";
+import { AppBar, Paper, Container, Toolbar, Typography } from "@mui/material";
+import { Dashboard } from "pages";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={apolloClient}>
+      <Paper>
+        <AppBar position="static">
+          <Container>
+            <Toolbar disableGutters>
+              <Typography
+                variant="h6"
+                noWrap
+                component="a"
+                href="/"
+                sx={{
+                  mr: 2,
+                  display: { xs: "none", md: "flex" },
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                Wise Challenge
+              </Typography>
+            </Toolbar>
+          </Container>
+        </AppBar>
+      </Paper>
+      <Container
+        sx={{
+          p: 2,
+        }}
+      >
+        <Dashboard />
+      </Container>
+    </ApolloProvider>
   );
-}
+};
 
 export default App;

@@ -64,7 +64,7 @@ export const Dashboard: FC = () => {
   const handleSearchChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setStartBlock(parseInt(e.target.value, 10));
+    setStartBlock(parseInt(e.target.value, 10) || 0);
   };
 
   const handleSort = (key: string) => {
